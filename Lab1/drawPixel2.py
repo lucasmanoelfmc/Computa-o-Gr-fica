@@ -33,21 +33,23 @@ def main():
     display = (width, height)
     screen = pg.display.set_mode(display, DOUBLEBUF | OPENGL)
 
-    ndh = 50
-    ndv = 50
-    gluOrtho2D(0, ndh, 0, ndv) 
+    ndh = width
+    ndv = height
+
+    gluOrtho2D(0, width, 0, height) 
 
     # WC coordenadas
-    wc_x_min = 0
-    wc_x_max = 100
-    wc_y_min = 0
-    wc_y_max = 100
-    wc_x = 50
-    wc_y = 50
+    wc_x_min = 10
+    wc_x_max = 500
+    wc_y_min = 10
+    wc_y_max = 500
+    wc_x = 20
+    wc_y = 20
 
     ndc_coordinates = wc_to_ndc(wc_x, wc_y, wc_x_min, wc_x_max, wc_y_min, wc_y_max)
     dc_coordinates = ndc_to_dc(ndc_coordinates[0], ndc_coordinates[1], ndh, ndv)
 
+    print(f"Height= {height}, Width = {width}")
     print(f"Coordenadas WC: X = {wc_x}, Y = {wc_y}")
     print(f"Coordenadas NDC: X = {ndc_coordinates[0]}, Y = {ndc_coordinates[1]}")
     print(f"Coordenadas DC: X = {dc_coordinates[0]}, Y = {dc_coordinates[1]}")

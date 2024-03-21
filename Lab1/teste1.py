@@ -22,7 +22,7 @@ def ndc_to_dc(ndc_x, ndc_y, ndh, ndv):
 def draw_pixel(dc_x, dc_y):
     glBegin(GL_POINTS)
     glColor3f(1.0, 0.0, 0.0)
-    glVertex2f(dc_x, dc_y) 
+    glVertex2f(dc_x, dc_y)
     glEnd()
 
 def main():
@@ -33,21 +33,23 @@ def main():
     display = (width, height)
     screen = pg.display.set_mode(display, DOUBLEBUF | OPENGL)
 
-    ndh = 1
-    ndv = 1
-    gluOrtho2D(-ndh, ndh, -ndv, ndv) 
+    ndh = 100
+    ndv = 100
+
+    gluOrtho2D(0, ndv, 0, ndh) 
 
     # WC coordenadas
-    wc_x_min = 0
-    wc_x_max = 100
-    wc_y_min = 0
-    wc_y_max = 100
-    wc_x = 50
-    wc_y = 50
+    wc_x_min = 10
+    wc_x_max = 500
+    wc_y_min = 10
+    wc_y_max = 500
+    wc_x = 20
+    wc_y = 20
 
     ndc_coordinates = wc_to_ndc(wc_x, wc_y, wc_x_min, wc_x_max, wc_y_min, wc_y_max)
     dc_coordinates = ndc_to_dc(ndc_coordinates[0], ndc_coordinates[1], ndh, ndv)
 
+    print(f"Height= {height}, Width = {width}")
     print(f"Coordenadas WC: X = {wc_x}, Y = {wc_y}")
     print(f"Coordenadas NDC: X = {ndc_coordinates[0]}, Y = {ndc_coordinates[1]}")
     print(f"Coordenadas DC: X = {dc_coordinates[0]}, Y = {dc_coordinates[1]}")
@@ -57,7 +59,7 @@ def main():
             if event.type == pg.QUIT:
                 pg.quit()
                 quit()
-
+    
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         draw_pixel(dc_coordinates[0], dc_coordinates[1])
         pg.display.flip()
