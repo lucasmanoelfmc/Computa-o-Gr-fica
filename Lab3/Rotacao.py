@@ -30,8 +30,9 @@ def rotacao(theta, matriz1):
 
     rad = np.radians(theta)
 
-    matrizTheta = np.array([[np.cos(rad), - np.sin(rad)],
-                            [np.sin(rad), np.cos(rad)]])
+    matrizTheta = np.array([[np.cos(rad), - np.sin(rad), 0],
+                            [np.sin(rad), np.cos(rad), 0],
+                            [0, 0, 1]])
 
     matriz2 = np.dot(matrizTheta, matriz1)
     return matriz2
@@ -49,7 +50,8 @@ def main():
     gluOrtho2D(-width/2, width/2, -height/2, height/2)
 
     matriz1 = np.array([[0, 50, 50, 0], 
-                        [0, 0, 50, 50]])
+                        [0, 0, 50, 50],
+                        [1, 1, 1, 1]])
 
     while True:
         for event in pg.event.get():

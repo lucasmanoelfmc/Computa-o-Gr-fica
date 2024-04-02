@@ -27,32 +27,36 @@ def DDA(x0, y0, xEnd, yEnd, Red, Green, Blue):
     
 def reflexao_em_x(matriz1):
 
-    matrizRef = np.array([[1, 0],
-                          [0, -1]])
+    matrizRef = np.array([[1, 0, 0],
+                          [0, -1, 0],
+                          [0, 0, 1]])
 
     matriz2 = np.dot(matrizRef, matriz1)
     return matriz2
 
 def reflexao_em_y(matriz1):
 
-    matrizRef = np.array([[-1, 0],
-                          [0, 1]])
+    matrizRef = np.array([[-1, 0, 0],
+                          [0, 1, 0],
+                          [0, 0, 1]])
 
     matriz2 = np.dot(matrizRef, matriz1)
     return matriz2
 
 def reflexao_origem(matriz1):
 
-    matrizRef = np.array([[-1, 0],
-                          [0, -1]])
+    matrizRef = np.array([[-1, 0, 0],
+                          [0, -1, 0],
+                          [0, 0, 1]])
 
     matriz2 = np.dot(matrizRef, matriz1)
     return matriz2
 
 def reflexao_em_reta(matriz1):
 
-    matrizRef = np.array([[0, 1],
-                          [1, 0]])
+    matrizRef = np.array([[0, 1, 0],
+                          [1, 0, 0],
+                          [0, 0, 1]])
 
     matriz2 = np.dot(matrizRef, matriz1)
     return matriz2
@@ -72,7 +76,8 @@ def main():
     gluOrtho2D(-width/2, width/2, -height/2, height/2)
 
     matriz1 = np.array([[0, 50, 50, 0], 
-                        [0, 0, 50, 50]])
+                        [0, 0, 50, 50],
+                        [1, 1, 1, 1]])
 
     while True:
         for event in pg.event.get():

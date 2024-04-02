@@ -28,8 +28,9 @@ def DDA(x0, y0, xEnd, yEnd, Red, Green, Blue):
     
 def cisalhamento(matriz1, a, b):
 
-    matrizCis = np.array([[1, a],
-                          [b, 1]])
+    matrizCis = np.array([[1, a, 0],
+                          [b, 1, 0],
+                          [0, 0, 1]])
 
     matriz2 = np.dot(matrizCis, matriz1)
     return matriz2
@@ -40,14 +41,15 @@ height = info.current_h - 100
 width = info.current_w - 100
 display = (width, height)
 screen = pg.display.set_mode(display, DOUBLEBUF | OPENGL)
-pg.display.set_caption("Rotação")
+pg.display.set_caption("Cisalhamento")
 
 def main():
 
     gluOrtho2D(-width/2, width/2, -height/2, height/2)
 
     matriz1 = np.array([[0, 50, 50, 0], 
-                        [0, 0, 50, 50]])
+                        [0, 0, 50, 50], 
+                        [1, 1, 1, 1]])
 
     while True:
         for event in pg.event.get():
