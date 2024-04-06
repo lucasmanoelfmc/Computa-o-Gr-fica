@@ -13,7 +13,7 @@ def shear_point(point, a, b, w):
     # Convertendo o ponto para um vetor coluna
     point_vector = np.array([[point[0]], [point[1]], [w]])  # w = 1 para pontos
 
-    # Aplicando a transformação de rotação multiplicando a matriz de translação pelo vetor do ponto
+    # Aplicando a transformação de rotação multiplicando a matriz de cisalhamento pelo vetor do ponto
     shear_point_vector = np.dot(matrizCis, point_vector)
 
     # Normalizando as coordenadas homogêneas resultantes
@@ -27,7 +27,7 @@ def realizar_cisalhamento(square_points_list, a, b):
 
     point1, point2, point3, point4 = square_points_list
 
-    # Rotacionar os pontos
+    # Cisalhar os pontos
     point1 = shear_point(point1, a, b, 1)
     point2 = shear_point(point2, a, b, 1)
     point3 = shear_point(point3, a, b, 1)

@@ -58,7 +58,7 @@ def main():
     entry_sy.pack(pady=5)
 
     # Botão para Escala
-    btn_scale = tk.Button(frame_left, text="Aplicar Escala", command=lambda: ogl_frame.escala(int(entry_sx.get()), int(entry_sy.get()))) #Converter para int sempre que chamar a função
+    btn_scale = tk.Button(frame_left, text="Aplicar Escala", command=lambda: ogl_frame.escala(float(entry_sx.get()), float(entry_sy.get()))) #Converter para int sempre que chamar a função
     btn_scale.pack()
 
     # Caixa de entrada para Translação Tx
@@ -107,6 +107,18 @@ def main():
     btn_translate.pack()
 
     btn_translate = tk.Button(frame_mid2, text="Ref Reta 45", command=lambda: ogl_frame.reflexao45())
+    btn_translate.pack()
+
+    # Caixa de entrada para M da Reta da Reflexão Qualquer
+    entry_m = ctk.CTkEntry(frame_mid1, placeholder_text="m", height=10, width=40)
+    entry_m.pack(pady=5)
+
+    # Caixa de entrada para B da Reta da Reflexão Qualquer
+    entry_b_reta = ctk.CTkEntry(frame_mid2, placeholder_text="b", height=10, width=40)
+    entry_b_reta.pack(pady=5)
+
+    # Botão para Reflexão Qualquer
+    btn_translate = tk.Button(frame_left, text="Aplicar Reflexao Qualquer", command=lambda: ogl_frame.reflexaoQualquer(float(entry_m.get()), float(entry_b_reta.get())))
     btn_translate.pack()
 
     root.mainloop()

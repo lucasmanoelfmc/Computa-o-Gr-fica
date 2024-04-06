@@ -12,6 +12,7 @@ from Transformações import Translacao
 from Transformações import Escala
 from Transformações import Cisalhamento
 from Transformações import Reflexao
+from Transformações import ReflexaoQualquer
 
 class AppOgl(OpenGLFrame):
     def initgl(self):
@@ -178,11 +179,13 @@ class AppOgl(OpenGLFrame):
 
         #Desenha o novo quadrado rotacionado
         self.draw_square(*self.square_points_list)
-
-
-        
-        
-        
     
+    def reflexaoQualquer(self, m, b):
 
+        self.square_points_list = ReflexaoQualquer.realizar_reflexao_qualquer(self.square_points_list, m, b)
 
+        #Remove o quadrado anterior
+        self.points = []
+
+        #Desenha o novo quadrado rotacionado
+        self.draw_square(*self.square_points_list)
