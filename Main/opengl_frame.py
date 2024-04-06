@@ -70,7 +70,7 @@ class AppOgl(OpenGLFrame):
         for k in range(int(steps)):
             x += xIncrement
             y += yIncrement
-            self.points.append((round(x), round(y)))
+            self.points.append((x, y))
             #self.draw_pixel(round(x), round(y))
     
 
